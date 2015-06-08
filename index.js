@@ -42,4 +42,4 @@ MetaTagRenderer.prototype.contentFor = function(type, config) {
 };
 
 
-module.exports = InlineContentRenderer;
+module.exports = MetaTagRenderer;
