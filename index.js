@@ -2,16 +2,27 @@ var fs = require('fs');
 var path = require('path');
 
 function renderContentWithTag(content, tag, options) {
+  var closeTag;
   var attrs = options && options.attrs;
   var openTag = '<' + tag;
-  var closeTag = '</' + tag + '>';
+
+  if (content) {
+    closeTag = '</' + tag + '>';
+  };
+
 
   for (var attr in attrs) {
     if (attrs.hasOwnProperty(attr)) {
       openTag += ' ' + attr + '="' + attrs[attr] + '"';
     }
   }
-  openTag += '>';
+
+  if (closeTag) {
+    openTag += '>';
+  } else {
+    openTag += '/>';
+  }
+
   return [openTag, content, closeTag].join('\n');
 }
 
@@ -25,6 +36,7 @@ MetaTagRenderer.prototype.included = function(app) {
 };
 
 MetaTagRenderer.prototype.contentFor = function(type, config) {
+  var tagAttrs;
   var metaTags = this.options.metaTags;
   var isHead = type === 'head'
 
@@ -34,8 +46,11 @@ MetaTagRenderer.prototype.contentFor = function(type, config) {
 
   content = '';
 
-  for (var attrs in metaTags) {
-    content += renderContentWithTag(undefined, 'meta', { attr: attrs});
+  for (var i=0; i<metaTags.length; ++i) {
+    tagAttrs = metaTags[i];
+
+    console.log('.....', tagAttrs);
+    content += renderContentWithTag(undefined, 'meta', { attrs: tagAttrs});
   }
 
   return content;
