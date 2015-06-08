@@ -1,10 +1,10 @@
-# ember-cli-inline-content [![Build Status](https://travis-ci.org/gdub22/ember-cli-inline-content.svg?branch=master)](https://travis-ci.org/gdub22/ember-cli-inline-content)
+# ember-cli-static-meta-tags
 
 An ember-cli add-on to render static meta-tags into your index.html file.
 
 ## Install
 ```
-npm install --save-dev ember-cli-meta-tags
+npm install --save-dev ember-cli-static-meta-tags
 ```
 *compatible with ember-cli >= v0.0.47*
 

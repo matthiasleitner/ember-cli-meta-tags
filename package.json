@@ -1,14 +1,14 @@
 {
-  "name": "ember-cli-meta-tags",
+  "name": "ember-cli-static-meta-tags",
   "version": "0.0.1",
-  "description": "An ember-cli add-on to render meta-tags into your index.html file",
+  "description": "An ember-cli add-on to render meta-tags into your index.html file at build time",
   "main": "index.js",
   "author": "Matthias Leitner (http://matthiasleitner.com/)",
   "license": "MIT",
-  "homepage": "https://github.com/matthiasleitner/ember-cli-meta-tags",
+  "homepage": "https://github.com/matthiasleitner/ember-cli-static-meta-tags",
   "repository": {
     "type": "git",
-    "url": "https://github.com/matthiasleitner/ember-cli-meta-tags.git"
+    "url": "https://github.com/matthiasleitner/ember-cli-static-meta-tags.git"
   },
   "keywords": [
     "ember-addon",
