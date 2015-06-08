@@ -48,8 +48,6 @@ MetaTagRenderer.prototype.contentFor = function(type, config) {
 
   for (var i=0; i<metaTags.length; ++i) {
     tagAttrs = metaTags[i];
-
-    console.log('.....', tagAttrs);
     content += renderContentWithTag(undefined, 'meta', { attrs: tagAttrs});
   }
 
