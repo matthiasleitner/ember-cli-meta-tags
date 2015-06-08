@@ -1,20 +1,19 @@
 {
-  "name": "ember-cli-inline-content",
+  "name": "ember-cli-meta-tags",
   "version": "0.4.0",
-  "description": "An ember-cli add-on to render inline scripts, styles, or any content directly into your index.html file",
+  "description": "An ember-cli add-on to render meta-tags into your index.html file",
   "main": "index.js",
-  "author": "Garth Poitras <garth22@gmail.com> (http://garthpoitras.com/)",
+  "author": "Matthias Leitner (http://matthiasleitner.com/)",
   "license": "MIT",
-  "homepage": "https://github.com/gdub22/ember-cli-inline-content",
+  "homepage": "https://github.com/matthiasleitner/ember-cli-meta-tags",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gdub22/ember-cli-inline-content.git"
+    "url": "https://github.com/matthiasleitner/ember-cli-meta-tags.git"
   },
   "keywords": [
     "ember-addon",
-    "html",
-    "css",
-    "js",
+    "contentFor"
+    "meta-tags",
     "inline"
   ],
   "scripts": {

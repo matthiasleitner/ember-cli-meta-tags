@@ -15,62 +15,31 @@ function renderContentWithTag(content, tag, options) {
   return [openTag, content, closeTag].join('\n');
 }
 
-function InlineContentRenderer(project) {
-  this.name = 'ember-cli-inline-content';
+function MetaTagRenderer(project) {
+  this.name = 'ember-cli-meta-tags';
   this.project = project;
 }
 
-InlineContentRenderer.prototype.included = function(app) {
+MetaTagRenderer.prototype.included = function(app) {
   this.options = app.options || {};
 };
 
-InlineContentRenderer.prototype.contentFor = function(type, config) {
-  var inlineContent = this.options.inlineContent;
-  var inlineContentForType = inlineContent && inlineContent[type];
-  var contentOptions, filePath, content;
+MetaTagRenderer.prototype.contentFor = function(type, config) {
+  var metaTags = this.options.metaTags;
+  var isHead = type === 'head'
 
-  if(inlineContentForType) {
-    contentOptions = ('object' === typeof inlineContentForType) && inlineContentForType;
-
-    if (contentOptions && contentOptions.enabled !== undefined && Boolean(contentOptions.enabled) === false) {
-      return;
-    }
-    
-    if (contentOptions && contentOptions.content) {
-      content = contentOptions.content;
-    } else {
-      filePath = contentOptions && contentOptions.file || inlineContentForType;
-      content = this.readFile(filePath);
-    }
-
-    if ('function' === typeof contentOptions.postProcess) {
-      content = contentOptions.postProcess(content);
-    }
-
-    if (filePath) {
-      switch (path.extname(filePath)) {
-        case '.js':
-          return renderContentWithTag(content, 'script', contentOptions);
-        case '.css':
-          return renderContentWithTag(content, 'style', contentOptions);
-      }
-    }
-
-    return content;
+  if(!isHead){
+    return;
   }
+
+  content = '';
+
+  for (var attrs in metaTags) {
+    content += renderContentWithTag(undefined, 'meta', { attr: attrs});
+  }
+
+  return content;
 };
 
-InlineContentRenderer.prototype.readFile = function(filePath) {
-  if (!filePath) {
-    return console.log(this.name + ' error: file path not defined');
-  }
-
-  var fullPath = path.join(this.project.root, filePath);
-  try {
-    return fs.readFileSync(fullPath, 'utf8');
-  } catch(e){
-    return console.log(this.name + ' error: file not found: ' + fullPath);
-  }
-};
 
 module.exports = InlineContentRenderer;
